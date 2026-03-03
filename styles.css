@@ -1,0 +1,95 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: #f1f5f9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #1e293b;
+  border-radius: 12px;
+}
+
+h1 {
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.9rem;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border-radius: 6px;
+  border: none;
+}
+
+button {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.mode-toggle {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.mode-toggle button {
+  flex: 1;
+}
+
+.mode-toggle .active {
+  background: #38bdf8;
+  color: #000;
+}
+
+.btn-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+pre {
+  margin-top: 20px;
+  background: #0f172a;
+  padding: 10px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.hint {
+  margin-top: 6px;
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+code {
+  padding: 0 4px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.08);
+}
+
+/* Result summary cards */
+.result-summary { margin-top: 18px; padding: 14px; border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; background: rgba(0,0,0,0.12); }
+.summary-header { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.summary-actions { display:flex; gap:10px; flex-wrap:wrap; }
+.summary-actions button { padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.08); color: #fff; cursor:pointer; }
+.summary-actions button:hover { background: rgba(255,255,255,0.12); }
+.summary-cards { display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+.summary-card { padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.06); }
+.summary-card h3 { margin: 0 0 8px 0; font-size: 14px; opacity: 0.9; }
+.summary-kv { display:grid; grid-template-columns: 1fr auto; gap: 6px 10px; font-size: 13px; }
+.summary-kv .k { opacity: 0.8; }
+.summary-kv .v { font-weight: 600; text-align:right; }
+@media (max-width: 900px){ .summary-cards { grid-template-columns: 1fr; } }

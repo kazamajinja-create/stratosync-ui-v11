@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<style>
+.logo-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+.logo-container img {
+    height: 70px;
+}
+@media (max-width: 768px) {
+    .logo-container img {
+        height: 50px;
+    }
+}
+</style>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StratoSync Soccer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="logo-container">
+    <img src="omega_surface_logo_final.png" alt="Omega Surface Architecture">
+</div>
+
+  <div class="container">
+    <h1>StratoSync Soccer</h1>
+
+    <div class="mode-toggle">
+      <button id="modeB2B" class="active">B2B (Club)</button>
+      <button id="modeB2C">B2C (Personal)</button>
+    </div>
+
+    <div class="form-block">
+      <label id="labelName">Club Name</label>
+      <input id="name" type="text" placeholder="Enter name" />
+
+      <label>Owner Name</label>
+      <input id="owner" type="text" placeholder="Owner" />
+
+      <label>Email</label>
+      <input id="email" type="email" placeholder="Email" />
+
+      <label>Phone</label>
+      <input id="phone" type="text" placeholder="Phone" />
+
+      <label>Address</label>
+      <input id="address" type="text" placeholder="Address" />
+
+      <label>Size</label>
+      <input id="size" type="text" placeholder="e.g. 1-30" />
+
+      <label>Company ID (required / query)</label>
+      <input id="companyId" type="number" placeholder="1" value="1" />
+
+      <label>X-Club-Id (prod only / header)</label>
+      <input id="clubId" type="text" placeholder="STS-2" />
+
+      <label>API Base URL</label>
+      <input id="apiBase" type="text" placeholder="https://your-api.example.com" />
+
+      <label>X-API-Key (header)</label>
+      <input id="apiKey" type="password" placeholder="Render Environment の DEMO_API_KEY / PROD key" />
+
+      <div class="hint">
+        demo は <code>X-API-Key</code> だけ。prod は <code>X-API-Key</code> と <code>X-Club-Id</code> が必要です。
+      </div>
+
+<div class="btn-group">
+        <button id="btnHealth">Check Health</button>
+        <button id="btnAnalyze">Run Analyze</button>
+      </div>
+    </div>
+
+    
+<section id="resultSummary" class="result-summary" style="display:none;">
+  <div class="summary-header">
+    <h2>Result Summary</h2>
+    <div class="summary-actions">
+      <button id="btnCopySummary" type="button">Copy Summary</button>
+      <button id="btnCopyJson" type="button">Copy JSON</button>
+    </div>
+  </div>
+  <div id="summaryCards" class="summary-cards"></div>
+</section>
+
+<pre id="output"></pre>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
