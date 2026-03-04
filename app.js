@@ -98,7 +98,8 @@
     try {
       const data = await callApi('/health');
       print(data);
-    } catch (e) {
+      renderSummaryCards(data);    
+      } catch (e) {
       print(String(e));
     }
   });
