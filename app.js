@@ -127,6 +127,8 @@
         body: buildRequestBody()
       });
       print(data);
+　　　renderSummaryCards(data);
+     renderOmegaRadar(data);
     } catch (e) {
       print(String(e));
     }
