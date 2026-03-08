@@ -393,25 +393,52 @@ function renderOmegaRadar(data){
  if(!ctx) return;
 
  new Chart(ctx,{
-  type:"radar",
-  data:{
-   labels:["BI","HI","OI","F","BiasRisk"],
-   datasets:[{
-    label:"Ω Metrics",
-    data:values,
-    backgroundColor:"rgba(0,150,255,0.2)",
-    borderColor:"#0096ff",
-    borderWidth:2
-   }]
+ type:"radar",
+ data:{
+  labels:["BI","HI","OI","F","BiasRisk"],
+  datasets:[{
+   label:"Ω Metrics",
+   data:values,
+   backgroundColor:"rgba(0,150,255,0.2)",
+   borderColor:"#0096ff",
+   borderWidth:2,
+   pointBackgroundColor:"#38bdf8"
+  }]
+ },
+ options:{
+  responsive:true,
+  maintainAspectRatio:false,
+  plugins:{
+   legend:{
+    labels:{
+     color:"#e5e7eb",
+     boxWidth:18
+    }
+   }
   },
-  options:{
-   scales:{
-    r:{
-     min:0,
-     max:1
+  scales:{
+   r:{
+    min:0,
+    max:1,
+    ticks:{
+     stepSize:0.2,
+     backdropColor:"transparent",
+     color:"#cbd5e1"
+    },
+    pointLabels:{
+     color:"#f8fafc",
+     font:{
+      size:14,
+      weight:"600"
+     }
+    },
+    grid:{
+     color:"rgba(255,255,255,0.12)"
+    },
+    angleLines:{
+     color:"rgba(255,255,255,0.12)"
     }
    }
   }
- });
-
-}
+ }
+});
