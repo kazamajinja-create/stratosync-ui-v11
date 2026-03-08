@@ -376,3 +376,42 @@ function renderSummaryCards(data){
 
   summaryEl.style.display = "block";
 }
+function renderOmegaRadar(data){
+
+ const metrics = data.metrics || data.result?.metrics || {};
+
+ const values = [
+  metrics.BI || 0,
+  metrics.HI || 0,
+  metrics.OI || 0,
+  metrics.F || 0,
+  metrics.BiasRisk || 0
+ ];
+
+ const ctx = document.getElementById("omegaRadar");
+
+ if(!ctx) return;
+
+ new Chart(ctx,{
+  type:"radar",
+  data:{
+   labels:["BI","HI","OI","F","BiasRisk"],
+   datasets:[{
+    label:"Ω Metrics",
+    data:values,
+    backgroundColor:"rgba(0,150,255,0.2)",
+    borderColor:"#0096ff",
+    borderWidth:2
+   }]
+  },
+  options:{
+   scales:{
+    r:{
+     min:0,
+     max:1
+    }
+   }
+  }
+ });
+
+}
