@@ -95,10 +95,10 @@ code {
 @media (max-width: 900px){ .summary-cards { grid-template-columns: 1fr; } }
 .chart-container {
   width: 100%;
-  max-width: 560px;
-  height: 460px;
-  margin: 40px auto;
-  padding: 24px;
+  max-width: 720px;
+  height: 560px;
+  margin: 20px auto;
+  padding: 30px;
   border-radius: 16px;
   background: rgba(15, 23, 42, 0.35);
   border: 1px solid rgba(255, 255, 255, 0.08);
