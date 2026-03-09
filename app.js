@@ -377,68 +377,26 @@ function renderSummaryCards(data){
   summaryEl.style.display = "block";
 }
 function renderOmegaRadar(data){
+  const metrics = data.metrics || data.result?.metrics || {};
+  const values = [
+    metrics.BI || 0,
+    metrics.HI || 0,
+    metrics.OI || 0,
+    metrics.F || 0,
+    metrics.BiasRisk || 0
+  ];
 
- const metrics = data.metrics || data.result?.metrics || {};
+  const ctx = document.getElementById("omegaRadar");
+  if (!ctx) return;
 
- const values = [
-  metrics.BI || 0,
-  metrics.HI || 0,
-  metrics.OI || 0,
-  metrics.F || 0,
-  metrics.BiasRisk || 0
- ];
-
- const ctx = document.getElementById("omegaRadar");
-
- if(!ctx) return;
-
- new Chart(ctx,{
- type:"radar",
- data:{
-  labels:["BI","HI","OI","F","BiasRisk"],
-  datasets:[{
-   label:"Ω Metrics",
-   data:values,
-   backgroundColor:"rgba(0,150,255,0.2)",
-   borderColor:"#0096ff",
-   borderWidth:2,
-   pointBackgroundColor:"#38bdf8"
-  }]
- },
- options:{
-  responsive:true,
-  maintainAspectRatio:false,
-  plugins:{
-   legend:{
-    labels:{
-     color:"#e5e7eb",
-     boxWidth:18
+  new Chart(ctx, {
+    type: "radar",
+    data: {
+      labels: ["BI","HI","OI","F","BiasRisk"],
+      datasets: [{
+        label: "Ω Metrics",
+        data: values
+      }]
     }
-   }
-  },
-  scales:{
-   r:{
-    min:0,
-    max:1,
-    ticks:{
-     stepSize:0.2,
-     backdropColor:"transparent",
-     color:"#cbd5e1"
-    },
-    pointLabels:{
-     color:"#f8fafc",
-     font:{
-      size:14,
-      weight:"600"
-     }
-    },
-    grid:{
-     color:"rgba(255,255,255,0.12)"
-    },
-    angleLines:{
-     color:"rgba(255,255,255,0.12)"
-    }
-   }
-  }
- }
-});
+  });
+}
