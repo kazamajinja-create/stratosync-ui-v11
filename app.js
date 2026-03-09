@@ -465,10 +465,10 @@ function renderOmegaRadar(data) {
             }
           },
           grid: {
-            color: "rgba(255,255,255,0.25)"
+            color: "rgba(255,255,255,0.36)"
           },
           angleLines: {
-            color: "rgba(255,255,255,0.35)"
+            color: "rgba(255,255,255,0.45)"
           }
         }
       }
