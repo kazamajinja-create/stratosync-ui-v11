@@ -93,3 +93,20 @@ code {
 .summary-kv .k { opacity: 0.8; }
 .summary-kv .v { font-weight: 600; text-align:right; }
 @media (max-width: 900px){ .summary-cards { grid-template-columns: 1fr; } }
+.chart-container {
+  width: 100%;
+  max-width: 560px;
+  height: 420px;
+  margin: 32px auto;
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-sizing: border-box;
+}
+
+.chart-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
