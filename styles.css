@@ -96,9 +96,9 @@ code {
 .chart-container {
   width: 100%;
   max-width: 560px;
-  height: 420px;
-  margin: 32px auto;
-  padding: 20px;
+  height: 460px;
+  margin: 40px auto;
+  padding: 24px;
   border-radius: 16px;
   background: rgba(15, 23, 42, 0.35);
   border: 1px solid rgba(255, 255, 255, 0.08);
