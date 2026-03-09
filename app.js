@@ -376,27 +376,102 @@ function renderSummaryCards(data){
 
   summaryEl.style.display = "block";
 }
-function renderOmegaRadar(data){
-  const metrics = data.metrics || data.result?.metrics || {};
+function renderOmegaRadar(data) {
+  const metrics = data?.metrics || data?.result?.metrics || {};
+
   const values = [
-    metrics.BI || 0,
-    metrics.HI || 0,
-    metrics.OI || 0,
-    metrics.F || 0,
-    metrics.BiasRisk || 0
+    Number(metrics.BI ?? 0),
+    Number(metrics.HI ?? 0),
+    Number(metrics.OI ?? 0),
+    Number(metrics.F ?? 0),
+    Number(metrics.BiasRisk ?? 0)
   ];
 
-  const ctx = document.getElementById("omegaRadar");
-  if (!ctx) return;
+  const canvas = document.getElementById("omegaRadar");
+  if (!canvas) return;
 
-  new Chart(ctx, {
+  // 既存チャートがあれば破棄
+  if (window.__omegaRadarChart) {
+    window.__omegaRadarChart.destroy();
+  }
+
+  window.__omegaRadarChart = new Chart(canvas, {
     type: "radar",
     data: {
-      labels: ["BI","HI","OI","F","BiasRisk"],
-      datasets: [{
-        label: "Ω Metrics",
-        data: values
-      }]
+      labels: ["BI", "HI", "OI", "F", "BiasRisk"],
+      datasets: [
+        {
+          label: "Ω Metrics",
+          data: values,
+          backgroundColor: "rgba(56, 189, 248, 0.20)",
+          borderColor: "#38bdf8",
+          pointBackgroundColor: "#38bdf8",
+          pointBorderColor: "#ffffff",
+          pointRadius: 4,
+          pointHoverRadius: 5,
+          borderWidth: 2
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      layout: {
+        padding: 16
+      },
+      plugins: {
+        legend: {
+          position: "top",
+          labels: {
+            color: "#e5e7eb",
+            boxWidth: 18,
+            boxHeight: 10,
+            padding: 16,
+            font: {
+              size: 13,
+              weight: "600"
+            }
+          }
+        },
+        tooltip: {
+          callbacks: {
+            label: function (context) {
+              return `${context.label}: ${context.raw}`;
+            }
+          }
+        }
+      },
+      scales: {
+        r: {
+          min: 0,
+          max: 1,
+          beginAtZero: true,
+          ticks: {
+            stepSize: 0.2,
+            display: true,
+            showLabelBackdrop: false,
+            color: "#cbd5e1",
+            backdropColor: "transparent",
+            z: 1,
+            font: {
+              size: 11
+            }
+          },
+          pointLabels: {
+            color: "#f8fafc",
+            font: {
+              size: 13,
+              weight: "600"
+            }
+          },
+          grid: {
+            color: "rgba(255,255,255,0.10)"
+          },
+          angleLines: {
+            color: "rgba(255,255,255,0.12)"
+          }
+        }
+      }
     }
   });
 }
